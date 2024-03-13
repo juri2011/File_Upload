@@ -12,7 +12,8 @@
 		spring jsp 상관없이 멀티파트로 보내는 것이 좋다.
 	-->
 	<form action="uploadAction.jsp" method="post" enctype="multipart/form-data">
-	
+		파일:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" name="file"/>
+		<input type="submit" value="업로드" />
 	</form>
 </body>
 </html>
