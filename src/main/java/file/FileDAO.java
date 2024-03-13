@@ -11,8 +11,8 @@ public class FileDAO {
 		try {
 			
 			String dbURL = "jdbc:mysql://localhost:3306/file";
-			String dbID = "dbuser";
-			String dbPassword = "12345";
+			String dbID = "juri";
+			String dbPassword = "1102";
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			
