@@ -12,7 +12,8 @@
 </head>
 <body>
 	<%
-		String directory = application.getRealPath("/upload/");
+		/* 서버와 전혀 상관 없는 곳에 폴더 생성하고 관리 */
+		String directory = "D:/kdt_juri/jsp/upload";
 		int maxSize = 1024 * 1024 * 100; //100M까지만 가능
 		String encoding = "UTF-8";
 		//동일한 이름의 파일을 저장할 때 저장할 파일의 이름을 바꾸는 정책을 사용(덮어씌우는 정책도 있다)
@@ -24,9 +25,19 @@
 		String fileName = multipartRequest.getOriginalFileName("file");
 		String fileRealName = multipartRequest.getFilesystemName("file");
 		
-		new FileDAO().upload(fileName, fileRealName);
-		out.write("파일명: "+fileName + "<br>");
-		out.write("실제파일명: "+fileRealName + "<br>");
+		// 특정 파일만 불러 올 수 있고 그 외의 파일은 불러와도 바로 삭제
+		if(!fileName.endsWith(".gif") && !fileName.endsWith(".png") &&
+				!fileName.endsWith(".jpg") && !fileName.endsWith(".txt")){
+			
+			File file = new File(directory + "/" + fileRealName);
+			file.delete();
+			out.write("업로드 할 수 없는 확장자입니다.");
+			
+		}else{
+			new FileDAO().upload(fileName, fileRealName);
+			out.write("파일명: "+fileName + "<br>");
+			out.write("실제파일명: "+fileRealName + "<br>");
+		}
 		
 	%>
 </body>

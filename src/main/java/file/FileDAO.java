@@ -22,7 +22,7 @@ public class FileDAO {
 	}
 	
 	public int upload(String fileName, String fileRealName) {
-		String sql = "insert into file values(?,?)";
+		String sql = "insert into file values(?,?,0)";
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);

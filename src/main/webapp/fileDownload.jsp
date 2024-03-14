@@ -9,7 +9,7 @@
 </head>
 <body>
 <%
-	String directory = application.getRealPath("/upload/");
+	String directory = "D:/kdt_juri/jsp/upload";
 	String files[] = new File(directory).list();
 	
 	for(String file : files){
