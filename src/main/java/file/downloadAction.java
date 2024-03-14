@@ -48,6 +48,9 @@ public class downloadAction extends HttpServlet {
 			servletOutputStream.write(b,0,data);
 		}
 		
+		//다운로드가 되면 조회수 상승
+		new FileDAO().hit(fileName);
+		
 		servletOutputStream.flush();
 		servletOutputStream.close();
 		fileInputStream.close();
